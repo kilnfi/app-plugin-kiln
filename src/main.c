@@ -24,17 +24,13 @@
 
 #include "boilerplate_plugin.h"
 
-// List of selectors supported by this plugin.
-// EDIT THIS: Adapt the variable names and change the `0x` values to match your selectors.
-static const uint32_t SWAP_EXACT_ETH_FOR_TOKENS_SELECTOR = 0x7ff36ab5;
-static const uint32_t BOILERPLATE_DUMMY_SELECTOR_2 = 0x13374242;
+// Selector is the MethodId on Ethercan.
+//
+// Goerli: https://goerli.etherscan.io/tx/0x1bb88161fa4bc360dfb37e85de92239001cc433abf66f635ead43ff76084776a
+static const uint32_t KILN_DEPOSIT_SELECTOR = 0xf340fa01;
 
-// Array of all the different boilerplate selectors. Make sure this follows the same order as the
-// enum defined in `boilerplate_plugin.h`
-// EDIT THIS: Use the names of the array declared above.
-const uint32_t BOILERPLATE_SELECTORS[NUM_SELECTORS] = {
-    SWAP_EXACT_ETH_FOR_TOKENS_SELECTOR,
-    BOILERPLATE_DUMMY_SELECTOR_2,
+const uint32_t KILN_SELECTORS[NUM_SELECTORS] = {
+    KILN_DEPOSIT_SELECTOR,
 };
 
 // Function to dispatch calls from the ethereum app.

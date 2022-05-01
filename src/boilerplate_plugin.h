@@ -4,20 +4,12 @@
 #include "eth_plugin_interface.h"
 #include <string.h>
 
-// Number of selectors defined in this plugin. Should match the enum `selector_t`.
-// EDIT THIS: Put in the number of selectors your plugin is going to support.
-#define NUM_SELECTORS 2
-
-// Name of the plugin.
-// EDIT THIS: Replace with your plugin name.
-#define PLUGIN_NAME "Boilerplate"
+#define NUM_SELECTORS 1
+#define PLUGIN_NAME "Kiln"
 
 // Enumeration of the different selectors possible.
-// Should follow the exact same order as the array declared in main.c
-// EDIT THIS: Change the naming (`selector_t`), and add your selector names.
 typedef enum {
-    SWAP_EXACT_ETH_FOR_TOKENS = 0,
-    BOILERPLATE_DUMMY_2,
+    KILN_DEPOSIT = 0,
 } selector_t;
 
 // Enumeration used to parse the smart contract data.
@@ -31,8 +23,7 @@ typedef enum {
     UNEXPECTED_PARAMETER,
 } parameter;
 
-// EDIT THIS: Rename `BOILERPLATE` to be the same as the one initialized in `main.c`.
-extern const uint32_t BOILERPLATE_SELECTORS[NUM_SELECTORS];
+extern const uint32_t KILN_SELECTORS[NUM_SELECTORS];
 
 // Shared global memory with Ethereum app. Must be at most 5 * 32 bytes.
 // EDIT THIS: This struct is used by your plugin to save the parameters you parse. You

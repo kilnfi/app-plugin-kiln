@@ -56,10 +56,8 @@ void handle_provide_parameter(void *parameters) {
 
     // EDIT THIS: adapt the cases and the names of the functions.
     switch (context->selectorIndex) {
-        case SWAP_EXACT_ETH_FOR_TOKENS:
+        case KILN_DEPOSIT:
             handle_swap_exact_eth_for_tokens(msg, context);
-            break;
-        case BOILERPLATE_DUMMY_2:
             break;
         default:
             PRINTF("Selector Index not supported: %d\n", context->selectorIndex);

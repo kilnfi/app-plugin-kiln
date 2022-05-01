@@ -1,4 +1,4 @@
-#include "boilerplate_plugin.h"
+#include "kiln_plugin.h"
 
 // Sets the first screen to display.
 void handle_query_contract_id(void *parameters) {

@@ -22,7 +22,7 @@
 #include "os.h"
 #include "cx.h"
 
-#include "boilerplate_plugin.h"
+#include "kiln_plugin.h"
 
 // Selector is the MethodId on Ethercan.
 //

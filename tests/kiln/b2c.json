@@ -1,0 +1,16 @@
+{
+    "chainId": 5,
+    "contracts": [
+        {
+        "address": "0x1c27e1917dd883ef645f3bf563d1aadcd99d36b7",
+        "contractName": "KilnStaking",
+        "selectors": {
+            "0xf340fa01": {
+                "method": "Deposit",
+                "plugin": "kiln"
+		        }
+	      }
+	  }
+    ],
+    "name": "Kiln"
+}

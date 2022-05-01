@@ -7,7 +7,7 @@
         "selectors": {
             "0xf340fa01": {
                 "method": "Deposit",
-                "plugin": "kiln"
+                "plugin": "Kiln"
 		        }
 	      }
 	  }

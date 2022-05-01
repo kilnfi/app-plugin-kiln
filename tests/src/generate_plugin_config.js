@@ -1,6 +1,3 @@
-// You will need to create a folder with this name, and put in the abis of your contracts in `abis/`.
-// You will also need to create a `b2c.json` file that will hold the methodIDs and location of
-// the erc20 tokens that should get displayed.
 const pluginFolder = "kiln";
 
 function serialize_data(pluginName, contractAddress, selector) {
@@ -61,12 +58,7 @@ function generate_plugin_config() {
 			const serializedData = serialize_data(pluginName, contractAddress, selector);
 			const signature = PLACE_HOLDER_SIGNATURE;
 
-			const erc20OfInterest = values["erc20OfInterest"];
-			assert(erc20OfInterest.length <= 2, `Maximum of 2 erc20OfInterest allowed. Got ${erc20OfInterest.length}`);
-
-
-			// Put them in `methods_info`
-			methods_info[selector] = {"erc20OfInterest": values["erc20OfInterest"], "plugin": pluginName, "serialized_data": serializedData, "signature": signature};
+			methods_info[selector] = {"plugin": pluginName, "serialized_data": serializedData, "signature": signature};
 		}
 		// Add the abi to methods_info
 		methods_info["abi"] = contracts_to_abis[contractAddress];

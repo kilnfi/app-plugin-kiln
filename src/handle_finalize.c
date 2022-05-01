@@ -5,6 +5,7 @@ void handle_finalize(void *parameters) {
     context_t *context = (context_t *) msg->pluginContext;
 
     msg->uiType = ETH_UI_TYPE_GENERIC;
-    msg->numScreens = 1;
+
+    msg->numScreens = 2;
     msg->result = ETH_PLUGIN_RESULT_OK;
 }

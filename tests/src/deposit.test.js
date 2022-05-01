@@ -31,8 +31,8 @@ nano_models.forEach(function(model) {
 
         await waitForAppScreen(sim);
 
-        await sim.navigateAndCompareSnapshots('.', model.name + '_deposit', [right_clicks, 3]);
-        
+        await sim.navigateAndCompareSnapshots('.', model.name + '_deposit', [right_clicks, 0]);
+
         await tx;
     }));
 });

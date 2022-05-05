@@ -1,32 +1,29 @@
-# app-plugin-boilerplate
+# app-plugin-kiln
 
-This repo is a meant to be a forkable example of a plugin.
+![Kiln Logo](https://uploads-ssl.webflow.com/625db3caa8abd6c22d5f0ce3/6260572336892a801afd71e3_Kiln_Logo-Transparent-Dark.svg)
 
-Plugins are lightweight applications that go hand-in-hand with the Ethereum
-Application on a Nano S / X device.
+This plug-in is compatible with Nano S / X devices, it enables to interact in a
+secure with the Kiln deposit smart contract to stake Ethereum. Current
+implementation targets the Goërli network and is limited to the `deposit` call.
 
-They allow users to safely interact with smart contracts by parsing the
-transaction data and displaying its content in a human readable way. This is
-done on a "per contract" basis, meaning a plugin is required for every DApp.
+## Nano S
 
-The code has been commented, and special "EDIT THIS" comments indicate where
-developers are expected to adapt the code to their own needs.
+![step 0](snapshots/nanos_deposit/00000.png)
+![step 1](snapshots/nanos_deposit/00001.png)
+![step 2](snapshots/nanos_deposit/00002.png)
+![step 3](snapshots/nanos_deposit/00003.png)
+![step 4](snapshots/nanos_deposit/00004.png)
+![step 5](snapshots/nanos_deposit/00005.png)
+![step 6](snapshots/nanos_deposit/00006.png)
+![step 7](snapshots/nanos_deposit/00007.png)
+![step 8](snapshots/nanos_deposit/00008.png)
 
-It is STRONGLY recommended to follow the
-[plugin guide](https://developers.ledger.com/docs/dapp/nano-plugin/overview/)
-in order to better understand the flow and the context for plugins.
+## Nano X
 
-## Ethereum SDK
-
-Ethereum plugins need the [Ethereum SDK](https://github.com/LedgerHQ/ethereum-plugin-sdk).
-You can use the `ETHEREUM_PLUGIN_SDK` variable to point to the directory where you cloned
-this repository. By default, the `Makefile` expects it to be at the root directory of this
-plugin repository, by the `ethereum-plugin-sdk` name.
-
-This repository is deliberately **not** a submodule. You can see that the CI workflows
-clone and checkout either the latest `master` or on `develop` references. This ensures
-the code is compiled and tested on the latest version of the SDK.
-
-## Formatting
-
-The C source code is expected to be formatted with `clang-format` 11.0.0 or higher.
+![step 0](snapshots/nanox_deposit/00000.png)
+![step 1](snapshots/nanox_deposit/00001.png)
+![step 2](snapshots/nanox_deposit/00002.png)
+![step 3](snapshots/nanox_deposit/00003.png)
+![step 4](snapshots/nanox_deposit/00004.png)
+![step 5](snapshots/nanox_deposit/00005.png)
+![step 6](snapshots/nanox_deposit/00006.png)

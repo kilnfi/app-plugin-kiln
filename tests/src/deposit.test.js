@@ -6,7 +6,7 @@ import { parseEther, parseUnits} from "ethers/lib/utils";
 
 const contractAddr = "0x1c27e1917dd883ef645f3bf563d1aadcd99d36b7";
 
-const pluginName = "Kiln";
+const pluginName = "kiln";
 const abi_path = `../${pluginName}/abis/` + contractAddr + '.json';
 const abi = require(abi_path);
 

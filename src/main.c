@@ -26,7 +26,8 @@
 
 // Selector is the MethodId on Ethercan.
 //
-// Goerli: https://goerli.etherscan.io/tx/0x1bb88161fa4bc360dfb37e85de92239001cc433abf66f635ead43ff76084776a
+// Goerli:
+// https://goerli.etherscan.io/tx/0x1bb88161fa4bc360dfb37e85de92239001cc433abf66f635ead43ff76084776a
 static const uint32_t KILN_DEPOSIT_SELECTOR = 0xf340fa01;
 
 const uint32_t KILN_SELECTORS[NUM_SELECTORS] = {

@@ -9,24 +9,23 @@
 
 #define NUM_SELECTORS 1
 
-typedef enum {
-  KILN_DEPOSIT = 0
-} selector_t;
+typedef enum { KILN_DEPOSIT = 0 } selector_t;
 
 typedef enum {
-  WITHDRAWAL_ADDRESS = 0,  UNEXPECTED_PARAMETER,
+    WITHDRAWAL_ADDRESS = 0,
+    UNEXPECTED_PARAMETER,
 } parameter;
 
 extern const uint32_t KILN_SELECTORS[NUM_SELECTORS];
 
 typedef struct context_t {
-  uint8_t     withdrawal_address[ADDRESS_LENGTH];
+    uint8_t withdrawal_address[ADDRESS_LENGTH];
 
-  uint8_t     next_param;
-  uint16_t    offset;
-  bool        go_to_offset;
+    uint8_t next_param;
+    uint16_t offset;
+    bool go_to_offset;
 
-  selector_t  selectorIndex;
+    selector_t selectorIndex;
 } context_t;
 
 _Static_assert(sizeof(context_t) <= 5 * 32, "Structure of parameters too big.");

@@ -5,7 +5,7 @@
 #include "eth_internals.h"
 #include "eth_plugin_interface.h"
 
-#define PLUGIN_NAME "Kiln"
+#define PLUGIN_NAME "kiln"
 
 #define NUM_SELECTORS 1
 

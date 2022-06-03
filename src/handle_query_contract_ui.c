@@ -12,15 +12,13 @@ static void set_send_ui(ethQueryContractUI_t *msg) {
 static void set_withdrawal_ui(ethQueryContractUI_t *msg, context_t *context) {
     strlcpy(msg->title, "Withdrawal", msg->titleLength);
 
-    msg->msg[0] = '0';
-    msg->msg[1] = 'x';
-
     uint64_t chainid = 0;
 
-    getEthAddressStringFromBinary(context->withdrawal_address,
-                                  msg->msg + 2,
-                                  msg->pluginSharedRW->sha3,
-                                  chainid);
+    getEthDisplayableAddress(context->withdrawal_address,
+                             msg->msg,
+                             msg->msgLength,
+                             msg->pluginSharedRW->sha3,
+                             chainid);
 }
 
 void handle_query_contract_ui(void *parameters) {

@@ -11,8 +11,8 @@ static void handle_deposit(ethPluginProvideParameter_t *msg, context_t *context)
     switch (context->next_param) {
         case WITHDRAWAL_ADDRESS:
             copy_address(context->withdrawal_address,
-                           msg->parameter,
-                           sizeof(context->withdrawal_address));
+                         msg->parameter,
+                         sizeof(context->withdrawal_address));
             context->next_param = UNEXPECTED_PARAMETER;
             break;
 

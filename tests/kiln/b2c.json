@@ -2,7 +2,7 @@
     "chainId": 5,
     "contracts": [
         {
-        "address": "0x1c27e1917dd883ef645f3bf563d1aadcd99d36b7",
+        "address": "0x393216dfc16B9115936FFB78C87888817E63f291",
         "contractName": "KilnStaking",
         "selectors": {
             "0xf340fa01": {

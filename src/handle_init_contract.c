@@ -41,6 +41,10 @@ void handle_init_contract(void *parameters) {
             context->next_param = DEPOSIT_WITHDRAWAL_ADDRESS;
             break;
 
+        case KILN_WITHDRAW:
+            context->next_param = WITHDRAW_UNEXPECTED_PARAMETER;
+            break;
+
         default:
             PRINTF("Missing selectorIndex: %d\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;

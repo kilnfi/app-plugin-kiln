@@ -10,6 +10,7 @@ void handle_query_contract_id(void *parameters) {
         case KILN_DEPOSIT:
             strlcpy(msg->version, "Stake", msg->versionLength);
             msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
 
         case KILN_WITHDRAW:
             strlcpy(msg->version, "Withdraw", msg->versionLength);

@@ -4,7 +4,7 @@ import { waitForAppScreen, zemu, genericTx, nano_models,SPECULOS_ADDRESS, txFrom
 import { ethers } from "ethers";
 import { parseEther, parseUnits} from "ethers/lib/utils";
 
-const contractAddr = "0x393216dfc16B9115936FFB78C87888817E63f291";
+const contractAddr = "0x393216dfc16b9115936ffb78c87888817e63f291";
 
 const pluginName = "kiln";
 const abi_path = `../${pluginName}/abis/` + contractAddr + '.json';

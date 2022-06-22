@@ -1,7 +1,6 @@
 {
     "chainId": 5,
-    "contracts": [
-        {
+    "contracts": [{
         "address": "0x393216dfc16b9115936ffb78c87888817e63f291",
         "contractName": "KilnStaking",
         "selectors": {
@@ -24,9 +23,8 @@
             "0xbf509bd4": {
                 "method": "withdrawELFee",
                 "plugin": "kiln"
-            },
+            }
 	      }
-	  }
-    ],
+	  }],
     "name": "kiln"
 }

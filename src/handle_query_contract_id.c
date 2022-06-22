@@ -6,11 +6,19 @@ void handle_query_contract_id(void *parameters) {
 
     strlcpy(msg->name, PLUGIN_NAME, msg->nameLength);
 
-    if (context->selectorIndex == KILN_DEPOSIT) {
-        strlcpy(msg->version, "Stake", msg->versionLength);
-        msg->result = ETH_PLUGIN_RESULT_OK;
-    } else {
-        PRINTF("Selector index: %d not supported\n", context->selectorIndex);
-        msg->result = ETH_PLUGIN_RESULT_ERROR;
+    switch (context->selectorIndex) {
+        case KILN_DEPOSIT:
+            strlcpy(msg->version, "Stake", msg->versionLength);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+
+        case KILN_WITHDRAW:
+            strlcpy(msg->version, "Withdraw", msg->versionLength);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
+
+        default:
+            PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            break;
     }
 }

@@ -7,14 +7,30 @@
 
 #define PLUGIN_NAME "Kiln"
 
-#define NUM_SELECTORS 1
+// Available selectors:
+//
+// 0. deposit(withdrawal_address)
+// 1. withdraw()
+//
+// More to come!
+#define NUM_SELECTORS 2
 
-typedef enum { KILN_DEPOSIT = 0 } selector_t;
-
+// Selectors available (see mapping above).
 typedef enum {
-    WITHDRAWAL_ADDRESS = 0,
-    UNEXPECTED_PARAMETER,
-} parameter;
+    KILN_DEPOSIT = 0,
+    KILN_WITHDRAW,
+} selector_t;
+
+// Parameters for deposit selector.
+typedef enum {
+    DEPOSIT_WITHDRAWAL_ADDRESS = 0,
+    DEPOSIT_UNEXPECTED_PARAMETER,
+} deposit_parameters;
+
+// Parameters for withdraw selector.
+typedef enum {
+    WITHDRAW_UNEXPECTED_PARAMETER = 0,
+} withdraw_parameters;
 
 extern const uint32_t KILN_SELECTORS[NUM_SELECTORS];
 

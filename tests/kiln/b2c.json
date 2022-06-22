@@ -6,9 +6,25 @@
         "contractName": "KilnStaking",
         "selectors": {
             "0xf340fa01": {
-                "method": "Deposit",
+                "method": "deposit",
                 "plugin": "kiln"
-		        }
+		        },
+            "0xe99454f5": {
+                "method": "setWithdrawal",
+                "plugin": "kiln"
+            },
+            "0x0968f264": {
+                "method": "withdraw",
+                "plugin": "kiln"
+            },
+            "0x2ba03a79": {
+                "method": "withdrawCLFee",
+                "plugin": "kiln"
+            },
+            "0xbf509bd4": {
+                "method": "withdrawELFee",
+                "plugin": "kiln"
+            },
 	      }
 	  }
     ],

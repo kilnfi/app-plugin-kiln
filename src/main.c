@@ -24,15 +24,11 @@
 
 #include "kiln_plugin.h"
 
-// Selector is the MethodId on Ethercan.
-//
-// Goerli:
-// https://goerli.etherscan.io/tx/0x1bb88161fa4bc360dfb37e85de92239001cc433abf66f635ead43ff76084776a
+// Selector is the MethodId on Ethercan
 static const uint32_t KILN_DEPOSIT_SELECTOR = 0xf340fa01;
+static const uint32_t KILN_WITHDRAW_SELECTOR = 0x0968f264;
 
-const uint32_t KILN_SELECTORS[NUM_SELECTORS] = {
-    KILN_DEPOSIT_SELECTOR,
-};
+const uint32_t KILN_SELECTORS[NUM_SELECTORS] = {KILN_DEPOSIT_SELECTOR, KILN_WITHDRAW_SELECTOR};
 
 // Function to dispatch calls from the ethereum app.
 void dispatch_plugin_calls(int message, void *parameters) {

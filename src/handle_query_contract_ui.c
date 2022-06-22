@@ -1,6 +1,6 @@
 #include "kiln_plugin.h"
 
-static void set_send_ui(ethQueryContractUI_t *msg) {
+static void deposit_send_ui(ethQueryContractUI_t *msg) {
     strlcpy(msg->title, "Stake", msg->titleLength);
 
     const uint8_t *eth_amount = msg->pluginSharedRO->txContent->value.value;
@@ -9,7 +9,7 @@ static void set_send_ui(ethQueryContractUI_t *msg) {
     amountToString(eth_amount, eth_amount_size, WEI_TO_ETHER, "ETH ", msg->msg, msg->msgLength);
 }
 
-static void set_withdrawal_ui(ethQueryContractUI_t *msg, context_t *context) {
+static void deposit_withdrawal_ui(ethQueryContractUI_t *msg, context_t *context) {
     strlcpy(msg->title, "Withdrawal", msg->titleLength);
 
     uint64_t chainid = 0;
@@ -21,6 +21,44 @@ static void set_withdrawal_ui(ethQueryContractUI_t *msg, context_t *context) {
                              chainid);
 }
 
+static void deposit_ui(ethQueryContractUI_t *msg, context_t *context) {
+    switch (msg->screenIndex) {
+        case 0:
+            deposit_send_ui(msg);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
+
+        case 1:
+            deposit_withdrawal_ui(msg, context);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
+
+        default:
+            PRINTF("Received an invalid screenIndex\n");
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            return;
+    }
+}
+
+static void withdraw_rewards_ui(ethQueryContractUI_t *msg) {
+    strlcpy(msg->title, "Withdraw", msg->titleLength);
+    strlcpy(msg->msg, "Consensus & execution rewards", msg->msgLength);
+}
+
+static void withdraw_ui(ethQueryContractUI_t *msg, context_t *context) {
+    switch (msg->screenIndex) {
+        case 0:
+            withdraw_rewards_ui(msg);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
+
+        default:
+            PRINTF("Received an invalid screenIndex\n");
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            return;
+    }
+}
+
 void handle_query_contract_ui(void *parameters) {
     ethQueryContractUI_t *msg = (ethQueryContractUI_t *) parameters;
     context_t *context = (context_t *) msg->pluginContext;
@@ -28,20 +66,18 @@ void handle_query_contract_ui(void *parameters) {
     memset(msg->title, 0, msg->titleLength);
     memset(msg->msg, 0, msg->msgLength);
 
-    msg->result = ETH_PLUGIN_RESULT_OK;
-
-    switch (msg->screenIndex) {
-        case 0:
-            set_send_ui(msg);
+    switch (context->selectorIndex) {
+        case KILN_DEPOSIT:
+            deposit_ui(msg, context);
             break;
 
-        case 1:
-            set_withdrawal_ui(msg, context);
+        case KILN_WITHDRAW:
+            withdraw_ui(msg, context);
             break;
 
         default:
-            PRINTF("Received an invalid screenIndex\n");
+            PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
-            return;
+            break;
     }
 }

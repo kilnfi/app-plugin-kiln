@@ -11,15 +11,19 @@
 // Available selectors:
 //
 // 0. deposit(withdrawal_address)
-// 1. withdraw()
+// 1. withdraw(validator_pubkey)
+// 2. withdrawEL(validator_pubkey)
+// 2. withdrawCL(validator_pubkey)
 //
 // More to come!
-#define NUM_SELECTORS 2
+#define NUM_SELECTORS 4
 
 // Selectors available (see mapping above).
 typedef enum {
     KILN_DEPOSIT = 0,
     KILN_WITHDRAW,
+    KILN_WITHDRAW_EL,
+    KILN_WITHDRAW_CL,
 } selector_t;
 
 // Parameters for deposit selector.
@@ -28,7 +32,7 @@ typedef enum {
     DEPOSIT_UNEXPECTED_PARAMETER,
 } deposit_parameters;
 
-// Parameters for withdraw selector.
+// Parameters for withdraw selectors (applies to withdraw, withdrawEL, withdrawCL)
 typedef enum {
     WITHDRAW_VALIDATION_OFFSET = 0,
     WITHDRAW_VALIDATION_LENGTH = 1,

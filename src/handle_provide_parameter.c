@@ -65,6 +65,8 @@ void handle_provide_parameter(void *parameters) {
             break;
 
         case KILN_WITHDRAW:
+        case KILN_WITHDRAW_EL:
+        case KILN_WITHDRAW_CL:
             handle_withdraw_parameters(msg, context);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;

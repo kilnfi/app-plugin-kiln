@@ -41,9 +41,26 @@ static void deposit_ui(ethQueryContractUI_t *msg, context_t *context) {
     }
 }
 
-static void withdraw_rewards_ui(ethQueryContractUI_t *msg) {
+static void withdraw_rewards_ui(ethQueryContractUI_t *msg, context_t *context) {
     strlcpy(msg->title, "Rewards", msg->titleLength);
-    strlcpy(msg->msg, "Consensus & Exec", msg->msgLength);
+
+    switch (context->selectorIndex) {
+        case KILN_WITHDRAW:
+            strlcpy(msg->msg, "Consensus & Exec", msg->msgLength);
+            break;
+
+        case KILN_WITHDRAW_EL:
+            strlcpy(msg->msg, "Execution Layer", msg->msgLength);
+            break;
+
+        case KILN_WITHDRAW_CL:
+            strlcpy(msg->msg, "Consensus Layer", msg->msgLength);
+            break;
+
+        default:
+            strlcpy(msg->msg, "?", msg->msgLength);
+            break;
+    }
 }
 
 static void withdraw_validation_address_ui(ethQueryContractUI_t *msg, context_t *context) {
@@ -55,7 +72,7 @@ static void withdraw_validation_address_ui(ethQueryContractUI_t *msg, context_t 
 static void withdraw_ui(ethQueryContractUI_t *msg, context_t *context) {
     switch (msg->screenIndex) {
         case 0:
-            withdraw_rewards_ui(msg);
+            withdraw_rewards_ui(msg, context);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 
@@ -84,6 +101,8 @@ void handle_query_contract_ui(void *parameters) {
             break;
 
         case KILN_WITHDRAW:
+        case KILN_WITHDRAW_EL:
+        case KILN_WITHDRAW_CL:
             withdraw_ui(msg, context);
             break;
 

@@ -43,6 +43,8 @@ void handle_init_contract(void *parameters) {
             break;
 
         case KILN_WITHDRAW:
+        case KILN_WITHDRAW_EL:
+        case KILN_WITHDRAW_CL:
             context->next_param = WITHDRAW_VALIDATION_OFFSET;
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;

@@ -33,6 +33,26 @@ from Ledger.
 ![step 5](./tests/snapshots/nanos_withdraw/00005.png)
 ![step 6](./tests/snapshots/nanos_withdraw/00006.png)
 
+#### Withdraw Execution Layer Fees
+
+![step 0](./tests/snapshots/nanos_withdrawEL/00000.png)
+![step 1](./tests/snapshots/nanos_withdrawEL/00001.png)
+![step 2](./tests/snapshots/nanos_withdrawEL/00002.png)
+![step 3](./tests/snapshots/nanos_withdrawEL/00003.png)
+![step 4](./tests/snapshots/nanos_withdrawEL/00004.png)
+![step 5](./tests/snapshots/nanos_withdrawEL/00005.png)
+![step 6](./tests/snapshots/nanos_withdrawEL/00006.png)
+
+#### Withdraw Consensus Layer Fees
+
+![step 0](./tests/snapshots/nanos_withdrawCL/00000.png)
+![step 1](./tests/snapshots/nanos_withdrawCL/00001.png)
+![step 2](./tests/snapshots/nanos_withdrawCL/00002.png)
+![step 3](./tests/snapshots/nanos_withdrawCL/00003.png)
+![step 4](./tests/snapshots/nanos_withdrawCL/00004.png)
+![step 5](./tests/snapshots/nanos_withdrawCL/00005.png)
+![step 6](./tests/snapshots/nanos_withdrawCL/00006.png)
+
 ### Nano X
 
 #### Deposit
@@ -54,3 +74,23 @@ from Ledger.
 ![step 4](./tests/snapshots/nanox_withdraw/00004.png)
 ![step 5](./tests/snapshots/nanox_withdraw/00005.png)
 ![step 6](./tests/snapshots/nanox_withdraw/00006.png)
+
+#### Withdraw Execution Layer Fees
+
+![step 0](./tests/snapshots/nanox_withdrawEL/00000.png)
+![step 1](./tests/snapshots/nanox_withdrawEL/00001.png)
+![step 2](./tests/snapshots/nanox_withdrawEL/00002.png)
+![step 3](./tests/snapshots/nanox_withdrawEL/00003.png)
+![step 4](./tests/snapshots/nanox_withdrawEL/00004.png)
+![step 5](./tests/snapshots/nanox_withdrawEL/00005.png)
+![step 6](./tests/snapshots/nanox_withdrawEL/00006.png)
+
+#### Withdraw Consensus Layer Fees
+
+![step 0](./tests/snapshots/nanox_withdrawCL/00000.png)
+![step 1](./tests/snapshots/nanox_withdrawCL/00001.png)
+![step 2](./tests/snapshots/nanox_withdrawCL/00002.png)
+![step 3](./tests/snapshots/nanox_withdrawCL/00003.png)
+![step 4](./tests/snapshots/nanox_withdrawCL/00004.png)
+![step 5](./tests/snapshots/nanox_withdrawCL/00005.png)
+![step 6](./tests/snapshots/nanox_withdrawCL/00006.png)

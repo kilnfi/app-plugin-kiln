@@ -13,7 +13,7 @@ void handle_finalize(void *parameters) {
             break;
 
         case KILN_WITHDRAW:
-            msg->numScreens = 1;
+            msg->numScreens = 2;
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 

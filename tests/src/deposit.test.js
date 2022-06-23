@@ -14,7 +14,7 @@ nano_models.forEach(function(model) {
     test('[Nano ' + model.letter + '] Stake Eth', zemu(model, async (sim, eth) => {
         const contract = new ethers.Contract(contractAddr, abi);
 
-        const withdrawalAddress = "0x08DaD7a266694014815B619170E7548E0A138533"; parseUnits("28471151959593036279", 'wei');
+        const withdrawalAddress = "0x08DaD7a266694014815B619170E7548E0A138533";
         const deadline = Number(1632843280);
 
         const {data} = await contract.populateTransaction.deposit(withdrawalAddress);

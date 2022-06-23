@@ -1,5 +1,5 @@
 #include "kiln_plugin.h"
-#include "utils.h"
+#include "bls.h"
 
 static void deposit_send_ui(ethQueryContractUI_t *msg) {
     strlcpy(msg->title, "Stake", msg->titleLength);
@@ -49,7 +49,7 @@ static void withdraw_rewards_ui(ethQueryContractUI_t *msg) {
 static void withdraw_validation_address_ui(ethQueryContractUI_t *msg, context_t *context) {
     strlcpy(msg->title, "Validation Key", msg->titleLength);
 
-    getEthBlsAddressStringFromBinary(msg, context->validator_address);
+    displayEthBlsAddressStringFromBinary(msg, context->validator_address);
 }
 
 static void withdraw_ui(ethQueryContractUI_t *msg, context_t *context) {

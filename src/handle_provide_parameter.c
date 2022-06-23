@@ -1,13 +1,6 @@
 #include "kiln_plugin.h"
 
 static void handle_deposit_parameters(ethPluginProvideParameter_t *msg, context_t *context) {
-    if (context->go_to_offset) {
-        if (msg->parameterOffset != context->offset + SELECTOR_SIZE) {
-            return;
-        }
-        context->go_to_offset = false;
-    }
-
     switch (context->next_param) {
         case DEPOSIT_WITHDRAWAL_ADDRESS:
             copy_address(context->withdrawal_address,
@@ -24,18 +17,28 @@ static void handle_deposit_parameters(ethPluginProvideParameter_t *msg, context_
 }
 
 static void handle_withdraw_parameters(ethPluginProvideParameter_t *msg, context_t *context) {
-    if (context->go_to_offset) {
-        if (msg->parameterOffset != context->offset + SELECTOR_SIZE) {
-            return;
-        }
-        context->go_to_offset = false;
-    }
-
+    // We don't use the offset here as we know the layout:
+    //
+    // 0: offset of the array (0x20)
+    // 1: length of the array (0x02)
+    // 2: first part of the key
+    // 3: second part of the key
     switch (context->next_param) {
-        case DEPOSIT_WITHDRAWAL_ADDRESS:
-          copy_address(context->validator_address,
-                       msg->parameter,
-                       sizeof(context->validator_address));
+        case WITHDRAW_VALIDATION_OFFSET:
+            context->next_param = WITHDRAW_VALIDATION_LENGTH;
+            break;
+
+        case WITHDRAW_VALIDATION_LENGTH:
+            context->next_param = WITHDRAW_VALIDATION_KEY_PART_1;
+            break;
+
+        case WITHDRAW_VALIDATION_KEY_PART_1:
+            copy_parameter(context->validator_address, msg->parameter, 32);
+            context->next_param = WITHDRAW_VALIDATION_KEY_PART_2;
+            break;
+
+        case WITHDRAW_VALIDATION_KEY_PART_2:
+            copy_parameter(context->validator_address + 32, msg->parameter, 16);
             context->next_param = WITHDRAW_UNEXPECTED_PARAMETER;
             break;
 
@@ -67,7 +70,7 @@ void handle_provide_parameter(void *parameters) {
             break;
 
         default:
-          PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
+            PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
             break;
     }

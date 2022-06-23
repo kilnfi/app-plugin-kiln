@@ -6,7 +6,7 @@
 #include "eth_plugin_interface.h"
 
 #define PLUGIN_NAME        "Kiln"
-#define VALIDATOR_KEY_SIZE 96
+#define VALIDATOR_KEY_SIZE 48
 
 // Available selectors:
 //
@@ -30,7 +30,10 @@ typedef enum {
 
 // Parameters for withdraw selector.
 typedef enum {
-    WITHDRAW_VALIDATION_KEY = 0,
+    WITHDRAW_VALIDATION_OFFSET = 0,
+    WITHDRAW_VALIDATION_LENGTH = 1,
+    WITHDRAW_VALIDATION_KEY_PART_1 = 2,  // BLS keys are 48 bytes, thus they are
+    WITHDRAW_VALIDATION_KEY_PART_2 = 3,  // taking 2x32 bytes parameters.
     WITHDRAW_UNEXPECTED_PARAMETER,
 } withdraw_parameters;
 
@@ -41,8 +44,6 @@ typedef struct context_t {
     uint8_t validator_address[VALIDATOR_KEY_SIZE];
 
     uint8_t next_param;
-    uint16_t offset;
-    bool go_to_offset;
 
     selector_t selectorIndex;
 } context_t;

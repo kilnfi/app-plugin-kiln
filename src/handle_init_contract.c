@@ -21,7 +21,7 @@ void handle_init_contract(void *parameters) {
     }
 
     if (msg->pluginContextLength < sizeof(context_t)) {
-      PRINTF("Plugin parameters structure is bigger than allowed size\n");
+        PRINTF("Plugin parameters structure is bigger than allowed size\n");
         msg->result = ETH_PLUGIN_RESULT_ERROR;
         return;
     }
@@ -43,7 +43,7 @@ void handle_init_contract(void *parameters) {
             break;
 
         case KILN_WITHDRAW:
-            context->next_param = WITHDRAW_VALIDATION_KEY;
+            context->next_param = WITHDRAW_VALIDATION_OFFSET;
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 

@@ -32,6 +32,13 @@ static void handle_withdraw_parameters(ethPluginProvideParameter_t *msg, context
     }
 
     switch (context->next_param) {
+        case DEPOSIT_WITHDRAWAL_ADDRESS:
+          copy_address(context->validator_address,
+                       msg->parameter,
+                       sizeof(context->validator_address));
+            context->next_param = WITHDRAW_UNEXPECTED_PARAMETER;
+            break;
+
         default:
             PRINTF("Param not supported: %d\n", context->next_param);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
@@ -48,19 +55,19 @@ void handle_provide_parameter(void *parameters) {
            PARAMETER_LENGTH,
            msg->parameter);
 
-    msg->result = ETH_PLUGIN_RESULT_OK;
-
     switch (context->selectorIndex) {
         case KILN_DEPOSIT:
             handle_deposit_parameters(msg, context);
+            msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 
         case KILN_WITHDRAW:
             handle_withdraw_parameters(msg, context);
+            msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 
         default:
-            PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
+          PRINTF("Selector Index not supported: %d\n", context->selectorIndex);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
             break;
     }

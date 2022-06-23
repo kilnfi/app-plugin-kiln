@@ -36,13 +36,21 @@ static void deposit_ui(ethQueryContractUI_t *msg, context_t *context) {
         default:
             PRINTF("Received an invalid screenIndex\n");
             msg->result = ETH_PLUGIN_RESULT_ERROR;
-            return;
+            break;
     }
 }
 
 static void withdraw_rewards_ui(ethQueryContractUI_t *msg) {
-    strlcpy(msg->title, "Withdraw", msg->titleLength);
-    strlcpy(msg->msg, "Consensus & execution rewards", msg->msgLength);
+  strlcpy(msg->title, "Rewards", msg->titleLength);
+    strlcpy(msg->msg, "Consensus & Exec", msg->msgLength);
+}
+
+static void withdraw_validation_address_ui(ethQueryContractUI_t *msg, context_t *context) {
+    strlcpy(msg->title, "Validation Key", msg->titleLength);
+
+    strlcpy(msg->msg,
+            context->validator_address,
+            msg->msgLength);
 }
 
 static void withdraw_ui(ethQueryContractUI_t *msg, context_t *context) {
@@ -52,10 +60,15 @@ static void withdraw_ui(ethQueryContractUI_t *msg, context_t *context) {
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 
+        case 1:
+            withdraw_validation_address_ui(msg, context);
+            msg->result = ETH_PLUGIN_RESULT_OK;
+            break;
+
         default:
             PRINTF("Received an invalid screenIndex\n");
             msg->result = ETH_PLUGIN_RESULT_ERROR;
-            return;
+            break;
     }
 }
 

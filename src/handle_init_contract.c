@@ -13,8 +13,6 @@ static int find_selector(uint32_t selector, const uint32_t *selectors, size_t n,
 void handle_init_contract(void *parameters) {
     ethPluginInitContract_t *msg = (ethPluginInitContract_t *) parameters;
 
-    // TODO: Consider comparing the smart-contract address.
-
     if (msg->interfaceVersion != ETH_PLUGIN_INTERFACE_VERSION_LATEST) {
         msg->result = ETH_PLUGIN_RESULT_UNAVAILABLE;
         return;
@@ -38,7 +36,7 @@ void handle_init_contract(void *parameters) {
 
     switch (context->selectorIndex) {
         case KILN_DEPOSIT:
-            context->next_param = DEPOSIT_WITHDRAWAL_ADDRESS;
+            context->next_param = DEPOSIT_UNEXPECTED_PARAMETER;
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 

@@ -8,7 +8,7 @@ void handle_finalize(void *parameters) {
 
     switch (context->selectorIndex) {
         case KILN_DEPOSIT:
-            msg->numScreens = 2;
+            msg->numScreens = 1;
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 

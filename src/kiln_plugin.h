@@ -10,10 +10,10 @@
 
 // Available selectors:
 //
-// 0. deposit(withdrawal_address)
+// 0. deposit()
 // 1. withdraw(validator_pubkey)
 // 2. withdrawEL(validator_pubkey)
-// 2. withdrawCL(validator_pubkey)
+// 3. withdrawCL(validator_pubkey)
 //
 // More to come!
 #define NUM_SELECTORS 4
@@ -28,7 +28,6 @@ typedef enum {
 
 // Parameters for deposit selector.
 typedef enum {
-    DEPOSIT_WITHDRAWAL_ADDRESS = 0,
     DEPOSIT_UNEXPECTED_PARAMETER,
 } deposit_parameters;
 
@@ -44,7 +43,6 @@ typedef enum {
 extern const uint32_t KILN_SELECTORS[NUM_SELECTORS];
 
 typedef struct context_t {
-    uint8_t withdrawal_address[ADDRESS_LENGTH];
     uint8_t validator_address[VALIDATOR_KEY_SIZE];
 
     uint8_t next_param;

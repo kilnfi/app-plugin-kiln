@@ -2,13 +2,6 @@
 
 static void handle_deposit_parameters(ethPluginProvideParameter_t *msg, context_t *context) {
     switch (context->next_param) {
-        case DEPOSIT_WITHDRAWAL_ADDRESS:
-            copy_address(context->withdrawal_address,
-                         msg->parameter,
-                         sizeof(context->withdrawal_address));
-            context->next_param = DEPOSIT_UNEXPECTED_PARAMETER;
-            break;
-
         default:
             PRINTF("Param not supported: %d\n", context->next_param);
             msg->result = ETH_PLUGIN_RESULT_ERROR;
@@ -60,15 +53,15 @@ void handle_provide_parameter(void *parameters) {
 
     switch (context->selectorIndex) {
         case KILN_DEPOSIT:
-            handle_deposit_parameters(msg, context);
             msg->result = ETH_PLUGIN_RESULT_OK;
+            handle_deposit_parameters(msg, context);
             break;
 
         case KILN_WITHDRAW:
         case KILN_WITHDRAW_EL:
         case KILN_WITHDRAW_CL:
-            handle_withdraw_parameters(msg, context);
             msg->result = ETH_PLUGIN_RESULT_OK;
+            handle_withdraw_parameters(msg, context);
             break;
 
         default:

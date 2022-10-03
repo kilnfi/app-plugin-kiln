@@ -10,27 +10,10 @@ static void deposit_send_ui(ethQueryContractUI_t *msg) {
     amountToString(eth_amount, eth_amount_size, WEI_TO_ETHER, "ETH ", msg->msg, msg->msgLength);
 }
 
-static void deposit_withdrawal_ui(ethQueryContractUI_t *msg, context_t *context) {
-    strlcpy(msg->title, "Withdrawal", msg->titleLength);
-
-    uint64_t chainid = 0;
-
-    getEthDisplayableAddress(context->withdrawal_address,
-                             msg->msg,
-                             msg->msgLength,
-                             msg->pluginSharedRW->sha3,
-                             chainid);
-}
-
 static void deposit_ui(ethQueryContractUI_t *msg, context_t *context) {
     switch (msg->screenIndex) {
         case 0:
             deposit_send_ui(msg);
-            msg->result = ETH_PLUGIN_RESULT_OK;
-            break;
-
-        case 1:
-            deposit_withdrawal_ui(msg, context);
             msg->result = ETH_PLUGIN_RESULT_OK;
             break;
 
